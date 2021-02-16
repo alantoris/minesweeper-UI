@@ -25,8 +25,11 @@ function App() {
         <Router>
           <Switch>
             <Route 
+              path="/match/:uuid" 
+              component={() => <Match token={token} deleteToken={deleteToken} />} 
+            />
+            <Route 
               path="/match" 
-              component={Match} 
               component={() => <Match token={token} deleteToken={deleteToken} />} 
             />
             <Route 
