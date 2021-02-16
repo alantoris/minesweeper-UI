@@ -40,10 +40,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInSide() {
+export default function AccountManager(props) {
   const classes = useStyles();
 
-  const token = localStorage.getItem('token');
+  const { token, setToken } = props;
 
   return (
     token ? (
@@ -56,7 +56,7 @@ export default function SignInSide() {
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
               <Route path="/account/login">
-                  <SingIn classes={classes}/>
+                  <SingIn classes={classes} setToken={setToken}/>
               </Route>
               <Route path="/account/signup">
                   <SingUp classes={classes}/>

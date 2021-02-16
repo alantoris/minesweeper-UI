@@ -43,7 +43,7 @@ const Match = (props) => {
 
     const classes = useStyles();
 
-    const token = localStorage.getItem('token');
+    const { token, deleteToken }  = props;
 
     return (
         token ? (
@@ -53,7 +53,7 @@ const Match = (props) => {
                     <Board></Board>
                 </Grid>
                 <Grid item xs={12} sm={8} md={3} component={Paper} elevation={6} square>
-                    <ControlPanel></ControlPanel>
+                    <ControlPanel deleteToken={deleteToken}></ControlPanel>
                 </Grid>
             </Grid>
         ) :

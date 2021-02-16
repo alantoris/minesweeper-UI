@@ -14,7 +14,7 @@ import { API_URL } from "../../config";
 
 const SingIn = (props) => {
 
-    const { classes, history } = props;
+    const { classes, history, setToken } = props;
 
     const { register, errors, handleSubmit } = useForm();
 
@@ -37,6 +37,7 @@ const SingIn = (props) => {
             switch (resStatus) {
                 case 201:
                     localStorage.setItem('token', response.access_token);
+                    setToken(response.access_token);
                     history.push("/");
                     break;
                 case 400:
