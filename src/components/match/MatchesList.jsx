@@ -6,7 +6,6 @@ import {
     ListItem,
     ListItemAvatar,
     ListItemSecondaryAction,
-    ListItemText,
     ListSubheader,
 } from '@material-ui/core';
 import { API_URL } from '../../config';
