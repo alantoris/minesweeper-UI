@@ -51,7 +51,7 @@ const Match = (props) => {
     const [match, setMatch] = React.useState(null);
 
     useEffect(() => {
-      if(uuid != null && match == null){
+      if(uuid != null && (match == null || match.uuid !== uuid)){
         let resStatus = 0;
         const requestOptions = {
             method: 'GET',

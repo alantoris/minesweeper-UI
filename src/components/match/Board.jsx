@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   FormControl,
+  Grid,
   InputLabel,
   MenuItem,
   Select,
@@ -102,22 +103,27 @@ const Board = (props) => {
 
     return (
       <Fragment>
-        <div>
-          Remaining mines: { match && match.remaining_flags}
-          <FormControl className={classes.formControl}>
-            <InputLabel id="select-action">Select action</InputLabel>
-            <Select
-              labelId="select-action"
-              value={action}
-              onChange={handleChange}
-            >
-              <MenuItem value={"DIS"}>Discover</MenuItem>
-              <MenuItem value={"FLG"}>Flag</MenuItem>
-              <MenuItem value={"UNK"}>Unknown</MenuItem>
-              <MenuItem value={"UNC"}>Clear</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
+        { match && (<Fragment>
+        <Grid container component="main" className={classes.root}>
+            <Grid item xs={4} sm={4} md={4} className={classes.board}>
+              Remaining mines: { match && match.remaining_flags}
+            </Grid>
+            <Grid item xs={4} sm={4} md={4} elevation={6} square>
+              <FormControl className={classes.formControl} style={{width: "100%"}}>
+                <InputLabel id="select-action">Select action</InputLabel>
+                <Select
+                  labelId="select-action"
+                  value={action}
+                  onChange={handleChange}
+                >
+                  <MenuItem value={"DIS"}>Discover</MenuItem>
+                  <MenuItem value={"FLG"}>Flag</MenuItem>
+                  <MenuItem value={"UNK"}>Unknown</MenuItem>
+                  <MenuItem value={"UNC"}>Clear</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+        </Grid>
         <table className={classes.table}><tbody>
           {
             match && match.board.map((row, row_index) =>
@@ -149,7 +155,8 @@ const Board = (props) => {
               }</tr>
             )
           }
-        </tbody></table>
+        </tbody></table></Fragment>)
+        }
         </Fragment>
     )
 }
