@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { 
     CssBaseline,
+    Divider,
     Grid,
     Paper,
 } from '@material-ui/core';
@@ -8,6 +9,7 @@ import { Redirect, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Board from './Board'
 import ControlPanel from './ControlPanel'
+import MatchesList from './MatchesList'
 import { API_URL } from '../../config'
 
 const useStyles = makeStyles((theme) => ({
@@ -111,6 +113,8 @@ const Match = (props) => {
                 </Grid>
                 <Grid item xs={12} sm={8} md={3} component={Paper} elevation={6} square>
                     <ControlPanel token={token} deleteToken={deleteToken}></ControlPanel>
+                    <Divider />
+                    <MatchesList token={token} ></MatchesList>
                 </Grid>
             </Grid>
         ) :
