@@ -40,6 +40,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+var matchStates = {
+  'IP': 'In progress',
+  'SC': 'Success',
+  'FA': 'Failed'
+}
+
+
 const Board = (props) => {
 
     const classes = useStyles();
@@ -106,7 +113,7 @@ const Board = (props) => {
         { match && (<Fragment>
         <Grid container component="main" className={classes.root}>
             <Grid item xs={4} sm={4} md={4} className={classes.board}>
-              Remaining mines: { match && match.remaining_flags}
+              Remaining flags: { match && match.remaining_flags}
             </Grid>
             <Grid item xs={4} sm={4} md={4} elevation={6} square>
               <FormControl className={classes.formControl} style={{width: "100%"}}>
@@ -122,6 +129,9 @@ const Board = (props) => {
                   <MenuItem value={"UNC"}>Clear</MenuItem>
                 </Select>
               </FormControl>
+            </Grid>
+            <Grid item xs={4} sm={4} md={4} className={classes.board}>
+              State: { matchStates[match.state]}
             </Grid>
         </Grid>
         <table className={classes.table}><tbody>
