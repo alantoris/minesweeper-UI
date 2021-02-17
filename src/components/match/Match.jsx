@@ -107,7 +107,7 @@ const Match = (props) => {
             <Grid container component="main" className={classes.root}>
                 <CssBaseline />
                 <Grid item xs={false} sm={4} md={9} className={classes.board}>
-                    <Board match={match}></Board>
+                    <Board match={match} setMatch={setMatch} token={token}></Board>
                 </Grid>
                 <Grid item xs={12} sm={8} md={3} component={Paper} elevation={6} square>
                     <ControlPanel token={token} deleteToken={deleteToken}></ControlPanel>
